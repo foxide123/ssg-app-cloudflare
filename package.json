@@ -7,10 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "build:worker": "pnpm opennextjs-cloudflare build",
-    "preview:worker": "pnpm opennextjs-cloudflare preview",
-    "preview": "pnpm build:worker && pnpm preview:worker",
-    "e2e": "playwright test -c e2e/playwright.config.ts"
+    "build:worker": "npm opennextjs-cloudflare build",
+    "preview:worker": "npm opennextjs-cloudflare preview",
+    "preview": "npm build:worker && npm preview:worker"
   },
   "dependencies": {
     "react": "^19.0.0",
@@ -18,12 +17,11 @@
     "next": "15.1.7"
   },
   "devDependencies": {
-    "@opennextjs/cloudflare": "workspace:*",
-    "@playwright/test": "catalog:",
-    "@types/node": "catalog:",
+    "@opennextjs/cloudflare": "^1.0.0-beta.2",
+    "@types/node": "^20.17.25",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "typescript": "catalog:",
-    "wrangler": "catalog:"
+    "typescript": "^5.8.2",
+    "wrangler": "^4.9.1"
   }
 }
