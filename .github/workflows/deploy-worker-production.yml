@@ -1,0 +1,39 @@
+name: Deploy Worker
+on:
+  push:
+    branches:
+      - master
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    name: Deploy
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Clean Previous Builds
+        run: rm -rf .open-next .next
+
+      - name: Build with OpenNext
+        run: npx opennextjs-cloudflare build
+
+      - name: Install Wrangler
+        run: npm install -g wrangler@latest
+
+      - name: Debug build output
+        run: |
+          echo "Top level:"
+          ls -la
+          echo "Inside .open-next:"
+          ls -la .open-next || echo ".open-next directory not found"
+
+      - name: Deploy
+        run: npm run deploy
