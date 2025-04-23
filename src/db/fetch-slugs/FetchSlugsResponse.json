@@ -1,0 +1,15 @@
+{
+  "data": [
+    {
+      "slug": "danish-coast-exploration"
+    },
+    {
+      "slug": "mountain-hike"
+    },
+    {
+      "slug": "traveling-to-germany"
+    }
+  ],
+  "status": 200,
+  "statusText": "OK"
+}

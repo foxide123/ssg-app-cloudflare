@@ -1,0 +1,14 @@
+{
+    "data": [
+        {
+            "id": "1234",
+            "article_id": "123456789",
+            "locale": "en",
+            "slug": "seo-introduction",
+            "image_src": "https://imagedelivery.net/Ap_RIQMnvK_LYOq1vIFisQ/767eb82b-aa2e-4a09-52a8-0286834e1b00/hd1920x1080",
+            "title": "Exploring Danish Coast",
+            "introduction": "Blog Post about Exporing Danish Coast in 2025",
+            "body": "Exploring Danish Coast Article Text"
+        }
+    ]
+}
