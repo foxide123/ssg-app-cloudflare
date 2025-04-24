@@ -10,7 +10,8 @@
     "lint": "next lint",
     "build:worker": "opennextjs-cloudflare build",
     "preview:worker": "opennextjs-cloudflare preview",
-    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview"
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "deploy": "wrangler deploy"
   },
   "dependencies": {
     "@next/bundle-analyzer": "^15.3.0",
