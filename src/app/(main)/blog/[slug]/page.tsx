@@ -17,7 +17,6 @@ const source_serif_4 = Source_Serif_4({
 
 async function fetchArticleBySlug(slug: string) {
   const response = await fetch(`${baseUrl}/articles/${slug}`)
-  console.log("Response: ", response);
   if (!response.ok)
     throw new Error(`Failed to fetch article ${slug}`);
   const {data, error} = await response.json();
@@ -34,7 +33,6 @@ export async function generateStaticParams() {
 
   //generateStaticParams expects an array of objects to be returned
   const listMap = data.map((item: { slug: string }) => ({ slug: item.slug }))
-  console.log("List Map:", listMap)
   return listMap;
 }
 
@@ -69,7 +67,6 @@ export default async function BlogArticle({
 
   //now we have to fetch a single article based on our slug
   const article: ArticleData | null = await fetchArticleBySlug(slug);
-  console.log("article data:", article);
   if (!article) notFound();
 
   return (
