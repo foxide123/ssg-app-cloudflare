@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import styles from "./page.module.css";
-import { getCloudflareContext } from "@opennextjs/cloudflare";
 import HomeData from "@/data/en/HomeData.json"
 
 export const dynamic = "force-static";
@@ -14,9 +13,6 @@ export const metadata: Metadata = {
 };
 
 export default async function Home() {
-  const cloudflareContext = await getCloudflareContext({
-    async: true,
-  });
   
   const HeroData  = HomeData.Hero;
 
