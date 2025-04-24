@@ -3,9 +3,10 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import DOMPurify from "isomorphic-dompurify";
 import { Source_Serif_4 } from "next/font/google";
+import { hc } from "hono/client"
 
-//you can replace baseUrl with your api and call your DB from the page
-const baseUrl = "http://dashcruisedev.com";
+const client = hc('https://api.dashcruisedev.com');
+const baseUrl = 'https://api.dashcruisedev.com';
 
 const source_serif_4 = Source_Serif_4({
   subsets: ["latin"],
@@ -15,20 +16,17 @@ const source_serif_4 = Source_Serif_4({
 });
 
 async function fetchArticleBySlug(slug: string) {
-  const response = await fetch(
-    `${baseUrl}/api/fetch-post-by-slug?slug=${slug}`
-  );
-  const { data, error } = await response.json();
-  if (!response.ok || error)
-    throw new Error(`Failed to fetch article ${slug} : ${error}`);
+  const response = await fetch(`${baseUrl}/articles/${slug}`)
+  console.log("Response: ", response);
+  if (!response.ok)
+    throw new Error(`Failed to fetch article ${slug}`);
+  const {data, error} = await response.json();
   return data[0];
 }
 
 //pre-render pages for each slug that comes from DB
 export async function generateStaticParams() {
-  const response = await fetch(`${baseUrl}/api/fetch-slugs-with-locale`);
-
-  console.log("Response:", response);
+  const response = await fetch(`${baseUrl}/articles/slugs-with-locale`)
 
   if (!response.ok) throw new Error(`Failed to fetch slugs: ${response.text()}`);
 
